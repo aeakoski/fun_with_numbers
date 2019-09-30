@@ -13,3 +13,5 @@ The bit representation of the numbers generated inside the program will be padde
 >>> gnuplot
 >>> >>> plot 'points.log'
 ```
+
+![Number of bits set to 1 for different numbers](./plt.png)

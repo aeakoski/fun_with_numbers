@@ -15,4 +15,6 @@ Run the experiment by executing main in python 2.x and in the input argument, sp
 >>> python main.py 16
 ```
 
-*Requirements: Matplotlib and Numpy *
+*Requirements: TQDM, Matplotlib and Numpy can all be fetched using pip*
+
+![Guessing random numbers](./number_guess_plt.png)
