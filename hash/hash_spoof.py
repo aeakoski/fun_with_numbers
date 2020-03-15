@@ -4,15 +4,15 @@ import string
 import time
 import statistics
 
-import matplotlib
 import matplotlib.pyplot as plt
-import numpy as np
+import numpy
 
 correctHash =    "04bb14edf208831df2dcdd7f3cae2448cf818baf2de0cf9b3b0b1a58d3ad584d"
 goodEnoughHash = "________________________________________________________________"
 stopwatchVector = []
-timeResultsMatrix = [[]]*64
-
+timeResultsMatrix = []
+for i in range(64):
+    timeResultsMatrix.append([])
 
 random.seed()
 
@@ -29,7 +29,7 @@ def hash_string(hash_string):
 def valid(hashValue):
     global timeResultsMatrix
     global stopwatchVector
-    for i in range(len(goodEnoughHash)):
+    for i in range(0, len(goodEnoughHash)):
         if goodEnoughHash[i] == hashValue[i]:
             if i>1:
                 print i, time.time() - stopwatchVector[i]
@@ -52,7 +52,7 @@ startTime = time.time()
 def main():
     global stopwatchVector
     stopwatchVector = [time.time()]*64
-    nr_of_zeros = 4
+    nr_of_zeros = 5
     for g in range(1, nr_of_zeros + 1):
         setGoalHash(g)
         toHash = randomString(10)
@@ -63,18 +63,14 @@ def main():
     for i in range(0,4):
         print i, len(timeResultsMatrix[i])
     _y = map(statistics.mean, timeResultsMatrix[:len(_x)])
-    print _y
-    ##print timeResultsMatrix
-    print "x", len(_x)
-    print "y", len(_y)
-    #print timeResultsMatrix
-    #print _y
+
     fig, ax = plt.subplots()
     ax.grid()
     ax.scatter(_x, _y, color='r')
     ax.set_xlabel('Fixed digits')
-    ax.set_ylabel('Time')
+    ax.set_ylabel('Time (s)')
     ax.set_title('Time to create specific hash')
+    plt.xticks(_x)
     plt.show()
 
 
